@@ -11,7 +11,8 @@ function ProductModalUpdate({ oldProduct }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const handleImage = (event) =>
+    setProduct({ ...product, [event.target.name]: event.target.files[0] });
   const handleChange = (event) =>
     setProduct({ ...product, [event.target.name]: event.target.value });
 
@@ -37,12 +38,7 @@ function ProductModalUpdate({ oldProduct }) {
               onChange={(e) => handleChange(e)}
               placeholder="Product Name"
             />
-            <input
-              name="image"
-              value={product.image}
-              onChange={handleChange}
-              placeholder="Image"
-            />
+            <input name="image" onChange={handleImage} placeholder="Image" />
             <button type="submit">Edit</button>
           </form>
         </Modal.Body>
